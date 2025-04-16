@@ -27,7 +27,7 @@ def resource_path(rel_path: str) -> str:
 
 # Load environment variables from .env file
 # right after your resource_path() helper
-dotenv_path = resource_path('.env')
+dotenv_path = os.path.join(os.path.dirname(sys.executable if getattr(sys, 'frozen', False) else __file__), '.env')
 load_dotenv(dotenv_path)
 
 
