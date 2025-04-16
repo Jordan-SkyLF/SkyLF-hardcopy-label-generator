@@ -25,17 +25,33 @@ Integrates USPS API for address validation and caching, includes automatic retur
 Create a `.env` file in the root folder:
 
 ```
-SPLYNX_API_KEY=your_key_here
-SPLYNX_API_SECRET=your_secret_here
-SPLYNX_API_URL=https://splynx.example.com
-USPS_CONSUMER_KEY=your_usps_key
-USPS_CONSUMER_SECRET=your_usps_secret
-DISCORD_WEBHOOK_URL=https://discord.com/api/webhooks/...
-DEBUG_MODE=True
-TIME_THRESHOLD=20
+# Logging & timing
+DEBUG_MODE=False # off by default
+TIME_THRESHOLD=20 # takes around 20 seconds with no cached results, 5 ish with them
+
+# Discord webhook for notifications
+DISCORD_WEBHOOK_URL=INSERT
+
+# Splynx API credentials and endpoints
+SPLYNX_API_KEY=INSERT
+SPLYNX_API_SECRET=INSERT
+SPLYNX_API_URL=INSERT
+TARGET_LABEL=INSERT
+CUSTOMERS_ENDPOINT=INSERT
+
+# USPS OAuth credentials & endpoints
+USPS_CONSUMER_KEY=INSERT
+USPS_CONSUMER_SECRET=INSERT
+USPS_TOKEN_URL=INSERT
+USPS_ADDRESS_VALIDATION_URL=INSERT
+USPS_CITY_STATE_URL=INSERT
+
+# Persistent cache file names
+USPS_CITY_STATE_CACHE_FILE=INSERT
+USPS_ADDRESS_VALIDATION_CACHE_FILE=INSERT
+
 ```
 
-> ⚠️ **Do not commit this file** — it is ignored via `.gitignore`
 
 ## 🖨️ How to Use
 
