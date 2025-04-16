@@ -1,0 +1,47 @@
+name: Build and Release EXE
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Build EXE with PyInstaller
+        run: |
+          python -m PyInstaller --onefile --clean ^
+            --icon=resources/logo.ico ^
+            --add-data "resources;resources" ^
+            Hardcopy-label-generator.py
+
+      - name: Copy .env.example to dist folder
+        run: |
+          copy .env.example dist\
+
+      - name: Create versioned zip
+        run: |
+          $version = "$env:GITHUB_REF".Split("/")[-1]
+          Compress-Archive -Path dist\Hardcopy-label-generator.exe, dist\.env.example -DestinationPath "label-generator-$version.zip"
+
+      - name: Upload release artifact
+        uses: softprops/action-gh-release@v1
+        with:
+          files: label-generator-*.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
