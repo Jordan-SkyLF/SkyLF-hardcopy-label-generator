@@ -25,9 +25,9 @@ jobs:
 
       - name: Build EXE with PyInstaller
         run: |
-          python -m PyInstaller --onefile --clean ^
-            --icon=resources/logo.ico ^
-            --add-data "resources;resources" ^
+          python -m PyInstaller --onefile --clean `
+            --icon=resources/logo.ico `
+            --add-data "resources;resources" `
             Hardcopy-label-generator.py
 
       - name: Copy .env.example to dist folder
