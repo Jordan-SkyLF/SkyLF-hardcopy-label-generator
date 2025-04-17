@@ -78,7 +78,7 @@ project/
 ## 👤 Author
 
 Created by Jordan at SkyLinkFiber.net  
-🛠 Built with AI passion and caffeine in The Dalles, Oregon
+🛠 Built with AI, passion, and caffeine in The Dalles, Oregon
 
 ## 📃 License
 
