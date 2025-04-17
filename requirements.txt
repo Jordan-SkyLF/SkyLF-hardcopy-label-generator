@@ -1,4 +1,7 @@
-python-dotenv
-requests
-reportlab
-pyinstaller
+python-dotenv>=1.0.0
+requests>=2.31.0
+reportlab>=4.0.4
+pyinstaller>=6.3.0
+aiohttp>=3.8.5
+backoff>=2.2.1
+tenacity>=8.2.3
